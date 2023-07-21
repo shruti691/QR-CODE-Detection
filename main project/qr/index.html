@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <style>
+      .result{
+        background-color: green;
+        color:#fff;
+        padding:20px;
+      }
+      .row{
+        display:flex;
+      }
+      .bordered {
+    width: 200px;
+    height: 100px;
+    padding: 20px;
+    border: 10px solid rgba(0, 0, 0, 0.3);
+  }
+    </style> </head>
+  <body style="background-image: url('brpic.jpg');background-repeat:no-repeat;background-size: cover;">
+
+<center><h1 style="color:rgb(255, 0, 0);">QR AND BARCODE CODE READER </h1></center>
+<script src="html5-qrcode.min.js"></script>
+  
+<div class="row">
+  <div class="col">
+    <div style="width:500px;" id="reader"></div>
+  </div>
+  <div class="col" style="padding:60px;">
+    <h4 style="color:rgb(255, 0, 0);">SCAN RESULT</h4>
+    <div id="result">Result Here</div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+function onScanSuccess(qrCodeMessage) {
+    document.getElementById('result').innerHTML = '<span class="result">'+qrCodeMessage+'</span>';
+}
+
+function onScanError(errorMessage) {
+  //handle scan error
+}
+
+var html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader", { fps: 10, qrbox: 250 });
+html5QrcodeScanner.render(onScanSuccess, onScanError);
+
+</script>
+</body>
+</html>
